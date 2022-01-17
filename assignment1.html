@@ -4,7 +4,10 @@
         <meta charset="utf-8"> 
         <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
 
-        <title>Example Student's HCDE 439 Physical Computing Page!</title> 
+        <title>Arissa's HCDE 439 Physical Computing Page!</title> 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+	    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Poppins:wght@200;300&display=swap" rel="stylesheet">
 
         <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
 
@@ -12,13 +15,69 @@
     <body> 
 
         <div class="header">
-            <h1>Example Student's Assignment 1!</h1>
+            <h1>Arissa's Assignment 1!</h1>
             <p>
-            <img src="red-panda.jpg" width=400></a>
+            <img src="a1 blink.GIF" width=400></a>
             </p>
             <p>
-            Here is all the documentation for assignment 1!
+            Here is all the documentation for assignment 1! Above is my working circuit!
             </p>
+            <img src="a1 blink schematic.jpg" width=400></a>
+            <p>
+            I used four LED lights, in parallel with each other. Each light is supplied with 5V when coded to HIGH. To calculate the resistance needed, I used Ohm's Law (V = I * R). Yellow, green, and red LEDs have an approximate 1.8V drop, so the voltage that actually gets across is 3.2V. And since the current we want is 20 mA, the resister I should use is 160 ohms. I used a larger, standard resister of 220 ohms for each light.  
+            </p>
+            <img src="a1 blink circuit.jpg" width=400></a>
+            <p>
+            Each LED is connected to a different pin in the circuit to independently control the blinking pattern of the light. Each receives 5V from GND when on HIGH.
+            </p>
+            <img src="a1 blink circuit.jpg" width=400></a>
+            <code>
+                // I used Arduino's Blink template code as a starter (hence why some comments are the same)
+                // the setup function runs once when you press reset or power the board
+                void setup() {
+                  // initialize digital pin LED_BUILTIN as an output.
+                  pinMode(12, OUTPUT); // green1
+                  pinMode(11, OUTPUT); // yellow
+                  pinMode(10, OUTPUT); // red
+                  pinMode(9, OUTPUT);  // green2
+                }
+
+                // the loop function runs over and over again forever
+                void loop() {
+                  // turns green1 LED on
+                  digitalWrite(12, HIGH);   
+                  // turns yellow LED off
+                  digitalWrite(11, LOW);    
+                  // turns red LED off
+                  digitalWrite(10, LOW);    
+                  // turns green2 LED on
+                  digitalWrite(9, HIGH);    
+                  // wait for half a second
+                  delay(500);              
+                  // turns green1 LED off
+                  digitalWrite(12, LOW);    
+                  // turns yellow LED on
+                  digitalWrite(11, HIGH);   
+                  // wait for one second
+                  delay(1000);              
+                  // turns green1 LED on
+                  digitalWrite(12, HIGH);   
+                  // turns yellow LED off
+                  digitalWrite(11, LOW);    
+                  // turns red LED on
+                  digitalWrite(10, HIGH);   
+                  // turns green2 LED off
+                  digitalWrite(9, LOW);
+                  // wait for half a second
+                  delay(500);              
+                  // turns green1 LED off
+                  digitalWrite(12, LOW);    
+                  // turns yellow LED off
+                  digitalWrite(11, HIGH);   
+                  // wait for half a second
+                  delay(1000);            
+                }
+            </code>
         </div>
         
     </body>
