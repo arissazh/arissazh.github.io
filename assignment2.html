@@ -4,7 +4,10 @@
         <meta charset="utf-8"> 
         <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
 
-        <title>Example Student's HCDE 439 Physical Computing Page!</title> 
+        <title>Arissa's HCDE 439 Physical Computing Page!</title> 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+	    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Poppins:wght@200;300&display=swap" rel="stylesheet">
 
         <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
 
@@ -12,13 +15,86 @@
     <body> 
 
         <div class="header">
-            <h1>Example Student's Assignment 2!</h1>
+            <h1>Arissa's Assignment 2!</h1>
             <p>
-            <img src="red-panda.jpg" width=400></a>
+            <img src="a2 fade.GIF" width=400></a>
             </p>
             <p>
-            Here is all the documentation for assignment 2!
+            Here is all the documentation for assignment 2! In my circuit, when the button is pressed, the yellow LED turns off, while the green LED turns on and the last LED fades from yellow to green. 
             </p>
+            <img src="a2 fade schematic.jpg" width=400></a>
+            <p>
+            I used three different LED lights (one green, one yellow, and a bi-color LED with green and yellow since my set did not have an RGB light), in parallel with each other. Since each light is supplied with 5V when coded to HIGH, to calculate the resistance needed for each light I used Ohm's Law (V = I * R). Yellow, green, and red LEDs have an approximate 1.8V drop, so the voltage that actually gets across is 3.2V. And since the current we want is 20 mA, the resistor I should use is 160 ohms. I used a larger, standard resistor of 220 ohms for each light. I also used a button to control the lights, and limited the resistence flowing with a 10k resistor, as we had practiced in class. The button only needs a minimal amount of current to work, so using a larger resistor is fine and lowers the power used.   
+            </p>
+            <img src="a2 fade circuit.jpg" width=400></a>
+            <p>
+            Each LED is controlled by the button, receiving 5V from GND when the button is on/off.<br>
+		    digitalRead checks the button's status (whether it is on or off). digitalRead is used to turn on or off the green and yellow LEDs. analogWrite is used to fade the bi-color LED, in a for loop. Firmware code snippet is below. 
+            </p>
+            <pre>
+            <code> 
+            // For this assignment, I used Arduino's fade and button templates
+            // for reference (hence the comments on the code)
+            // as well as our in-class color fading example activity code
+
+            // constant, unchanging variables, setting pin numbers
+            const int buttonPin = 2;  // Button connected to pin 2
+            const int C1 = 9;         // Color 1 of bi-color LED connected to digital pin 9
+            const int C2 = 10;        // Color 2 of bi-color LED connected to digital pin 10
+            const int G = 13;         // Green LED connected to pin 13  
+            const int Y = 11;         // Yellow LED connected to pin 11
+
+            // For reading button status (pushed/unpushed) which can change
+            int buttonState = 0;      
+
+            void setup() {
+              // initializing LED pins as outputs
+              pinMode(C1, OUTPUT);
+              pinMode(C2, OUTPUT);
+              pinMode(G, OUTPUT);
+              pinMode(Y, OUTPUT);
+              // initializing button pin as an input
+              pinMode(buttonPin, INPUT);
+            }
+
+            void loop() {
+              // check the state of the pushbutton value:
+              buttonState = digitalRead(buttonPin);
+
+              // check if the pushbutton is pressed (HIGH)
+              if (buttonState == HIGH) {
+                // turn the yellow LED off
+                digitalWrite(Y, LOW);
+                // turn the green LED on
+                digitalWrite(G, HIGH);
+                // fade light from min to max of color 1 in bi-color LED
+                for (int fadeValue = 0 ; fadeValue < 256; fadeValue++) {
+                  // sets the value (range from 0 to 255):
+                  analogWrite(C1, fadeValue);
+                  // wait for 10 milliseconds to see fading effect
+                  delay(10);
+                }
+                // fade light from min to max of color 2 in bi-color LED
+                for (int fadeValue = 0 ; fadeValue < 256; fadeValue++) {
+                  // sets the value (range from 0 to 255):
+                  analogWrite(C2, fadeValue);
+                  // wait for 10 milliseconds to see fading effect
+                  delay(10);
+                }
+              // if the button is not on (LOW)
+              } else {
+                // turn green LED off:
+                digitalWrite(G, LOW);
+                // turn color 1 of bi-color LED off
+                analogWrite(C1, 0);
+                // turn color 2 of bi-color LED off
+                analogWrite(C2, 0);
+                // turn yellow LED on
+                digitalWrite(Y, HIGH);
+              }
+            }
+            </code>
+            </pre>
         </div>
         
     </body>
