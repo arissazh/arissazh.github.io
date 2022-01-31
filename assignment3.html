@@ -35,73 +35,73 @@
             <pre>
             <code> 
             // I used our in-class activity with the photoresistor for reference
-            // Set variables and pin numbers
-            const int sensorPin = A0; // Sensor connected to A0
-            const int B = 11;         // Blue of RGB LED connected to pin 11
-            const int G = 10;         // Green of RGB LED connected to pin 10
-            const int R = 9;          // Red of RBG LED connected to pin 9
-            int sensorValue = 0;      // for reading sensor value
-            int blueMap = 0;          // for setting a map for blue LED
-            int greenMap = 0;         // for setting a map for green LED
-            int redMap = 0;           // for setting a map for red LED
+		// Set variables and pin numbers
+		const int sensorPin = A0; // Sensor connected to A0
+		const int B = 11;         // Blue of RGB LED connected to pin 11
+		const int G = 10;         // Green of RGB LED connected to pin 10
+		const int R = 9;          // Red of RBG LED connected to pin 9
+		int sensorValue = 0;      // for reading sensor value
+		int blueMap = 0;          // for setting a map for blue LED
+		int greenMap = 0;         // for setting a map for green LED
+		int redMap = 0;           // for setting a map for red LED
 
-            void setup() {
-              // initialize LED pins as outputs
-              pinMode(R, OUTPUT);
-              pinMode(G, OUTPUT);
-              pinMode(B, OUTPUT);
-              // initialize serial communication at 9600 bits per second:
-              Serial.begin(9600);     
-            }
+		void setup() {
+		  // initialize LED pins as outputs
+		  pinMode(R, OUTPUT);
+		  pinMode(G, OUTPUT);
+		  pinMode(B, OUTPUT);
+		  // initialize serial communication at 9600 bits per second:
+		  Serial.begin(9600);     
+		}
 
-            void loop() {
-              // read the analog value from photoresistor:
-              sensorValue = analogRead(sensorPin);
-              // print the results to the Serial Monitor:
-              Serial.print("the sensor value is: ");
-              Serial.println(sensorValue);
+		void loop() {
+		  // read the analog value from photoresistor:
+		  sensorValue = analogRead(sensorPin);
+		  // print the results to the Serial Monitor:
+		  Serial.print("the sensor value is: ");
+		  Serial.println(sensorValue);
 
-              // setting levels for when each color in RBG LED turns on
-              if (sensorValue > 750) {
-                // map blue LED brightness to sensor values
-                blueMap = map(sensorValue, 750, 1023, 0, 255);
-                // set green LED map value to 0
-                greenMap = 0;
-                // set red LED map value to 0
-                redMap = 0;
-              }
-              else if (sensorValue > 650) {
-                // map green LED brightness to sensor values
-                greenMap = map(sensorValue, 650, 750, 0, 255);
-                // set blue LED map value to 0
-                blueMap = 0;
-                // set red LED map value to 0
-                redMap = 0;
-              }
-              else if (sensorValue > 450) {
-                // map red LED brightness to sensor values
-                redMap = map(sensorValue, 450, 650, 0, 255);
-                // set green LED map value to 0
-                greenMap = 0;
-                // set blue LED map value to 0
-                blueMap = 0;
-              }
-              // edge case: all lights turn off if less than 450
-              else {
-                // set red LED map value to 0
-                redMap = 0;
-                // set blue LED map value to 0
-                blueMap = 0;
-                // set green LED map value to 0
-                greenMap = 0;
-              }
-              // turn on blue LED
-              analogWrite(B, blueMap);
-              // turn on green LED
-              analogWrite(G, greenMap);
-              // turn on red LED
-              analogWrite(R, redMap);
-            }
+		  // setting levels for when each color in RBG LED turns on
+		  if (sensorValue > 750) {
+		    // map blue LED brightness to sensor values
+		    blueMap = map(sensorValue, 750, 1023, 0, 255);
+		    // set green LED map value to 0
+		    greenMap = 0;
+		    // set red LED map value to 0
+		    redMap = 0;
+		  }
+		  else if (sensorValue > 650) {
+		    // map green LED brightness to sensor values
+		    greenMap = map(sensorValue, 650, 750, 0, 255);
+		    // set blue LED map value to 0
+		    blueMap = 0;
+		    // set red LED map value to 0
+		    redMap = 0;
+		  }
+		  else if (sensorValue > 450) {
+		    // map red LED brightness to sensor values
+		    redMap = map(sensorValue, 450, 650, 0, 255);
+		    // set green LED map value to 0
+		    greenMap = 0;
+		    // set blue LED map value to 0
+		    blueMap = 0;
+		  }
+		  // edge case: all lights turn off if less than 450
+		  else {
+		    // set red LED map value to 0
+		    redMap = 0;
+		    // set blue LED map value to 0
+		    blueMap = 0;
+		    // set green LED map value to 0
+		    greenMap = 0;
+		  }
+		  // turn on blue LED, if value was set to 0 then it is off
+		  analogWrite(B, blueMap);
+		  // turn on green LED, if value was set to 0 then it is off
+		  analogWrite(G, greenMap);
+		  // turn on red LED, if value was set to 0 then it is off
+		  analogWrite(R, redMap);
+		}
             </code>
             </pre>
         </div>
