@@ -1,0 +1,110 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+
+        <title>Arissa's HCDE 439 Physical Computing Page!</title> 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+	    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Poppins:wght@200;300&display=swap" rel="stylesheet">
+
+        <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
+
+    </head> 
+    <body> 
+
+        <div class="header">
+            <h1>Arissa's Assignment 3!</h1>
+            <p>
+            <img src="a3 input output.GIF" width=400></a>
+            </p>
+            <p>
+            Here is all the documentation for assignment 3! In my circuit, I used a photoresistor to take light input information to change the output of an RGB LED light. With different voltage outputs, there will be a different colored light (and brightness of it).  
+            </p>
+            <img src="a3 input output schematic.jpg" width=400></a>
+            <p>
+            I used an RGB LED with a 220 ohm resistor, a photoresistor, and two 10k ohm resistors to make 5k ohms of resistance for my voltage divider. Since each light is supplied with 5V when coded to HIGH, to calculate the resistance needed for each light I used Ohm's Law (V = I * R). Yellow, green, and red LEDs have an approximate 1.8V drop, so the voltage that actually gets across is 3.2V, while blue is around 3.6. And since the current we want is 20 mA, the resistor I should use is 160 ohms for green and red, and 90 ohms for blue. Thus, I used a larger, standard resistor of 220 ohms for the RGB LED. For my voltage divider implementation, I used a photoresistor and two 10k ohm resistors to create a 5k resistance. I measured the resistance from the photoresistor in my environment, with 8.4k ohms when the light was blocked, at approximately 1.4k ohms when light wasn't blocked. Using the V(out) = R2/(R1 + R2) * V(in) equation, I calculated a maximum voltage of approximately 4.38V and minimum of 2.71V (using 5k ohm resistors, as I wanted to maximize the range of the voltage I could get).    
+            </p>
+            <img src="a3 input output circuit.jpg" width=400></a>
+            <p>
+            Using analogRead, I found the lowest and highest serial value readings I got in my environment (~400 - ~900) and divided that into three ranges to assign to my R, G, and B LEDs. I used if statements to determine when to turn on each color of light, analogWrite to actually turn them on, and used mapping to assign serial values within the color range to that specific colored LED's brightness. 
+            My example serial monitor and firmware code snippet are below. 
+            </p>
+            <img src="a3 input output serial.jpg" width=400></a>
+            <pre>
+            <code> 
+            // I used our in-class activity with the photoresistor for reference
+            // Set variables and pin numbers
+            const int sensorPin = A0; // Sensor connected to A0
+            const int B = 11;         // Blue of RGB LED connected to pin 11
+            const int G = 10;         // Green of RGB LED connected to pin 10
+            const int R = 9;          // Red of RBG LED connected to pin 9
+            int sensorValue = 0;      // for reading sensor value
+            int blueMap = 0;          // for setting a map for blue LED
+            int greenMap = 0;         // for setting a map for green LED
+            int redMap = 0;           // for setting a map for red LED
+
+            void setup() {
+              // initialize LED pins as outputs
+              pinMode(R, OUTPUT);
+              pinMode(G, OUTPUT);
+              pinMode(B, OUTPUT);
+              // initialize serial communication at 9600 bits per second:
+              Serial.begin(9600);     
+            }
+
+            void loop() {
+              // read the analog value from photoresistor:
+              sensorValue = analogRead(sensorPin);
+              // print the results to the Serial Monitor:
+              Serial.print("the sensor value is: ");
+              Serial.println(sensorValue);
+
+              // setting levels for when each color in RBG LED turns on
+              if (sensorValue > 750) {
+                // map blue LED brightness to sensor values
+                blueMap = map(sensorValue, 750, 1023, 0, 255);
+                // set green LED map value to 0
+                greenMap = 0;
+                // set red LED map value to 0
+                redMap = 0;
+              }
+              else if (sensorValue > 650) {
+                // map green LED brightness to sensor values
+                greenMap = map(sensorValue, 650, 750, 0, 255);
+                // set blue LED map value to 0
+                blueMap = 0;
+                // set red LED map value to 0
+                redMap = 0;
+              }
+              else if (sensorValue > 450) {
+                // map red LED brightness to sensor values
+                redMap = map(sensorValue, 450, 650, 0, 255);
+                // set green LED map value to 0
+                greenMap = 0;
+                // set blue LED map value to 0
+                blueMap = 0;
+              }
+              // edge case: all lights turn off if less than 450
+              else {
+                // set red LED map value to 0
+                redMap = 0;
+                // set blue LED map value to 0
+                blueMap = 0;
+                // set green LED map value to 0
+                greenMap = 0;
+              }
+              // turn on blue LED
+              analogWrite(B, blueMap);
+              // turn on green LED
+              analogWrite(G, greenMap);
+              // turn on red LED
+              analogWrite(R, redMap);
+            }
+            </code>
+            </pre>
+        </div>
+        
+    </body>
+</html>
