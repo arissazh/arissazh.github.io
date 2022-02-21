@@ -1,0 +1,172 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+
+        <title>Arissa's HCDE 439 Physical Computing Page!</title> 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+	    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Poppins:wght@200;300&display=swap" rel="stylesheet">
+
+        <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
+
+    </head> 
+    <body> 
+
+        <div class="header">
+            <h1>Arissa's Assignment 5!</h1>
+            <p>
+            <img src="a5 higher voltage.GIF" width=400></a>
+            </p>
+            <p>
+            My circuit for Assignment 5 uses 12V load power, an LED strip as high load ouput, an N-MOSFET transistor, and an IR receiver and remote as the input sensor with a library. Each number on the remote causes a different light pattern on the LED strip. 
+            </p>
+            <img src="a5 higher voltage schematic.jpg" width=400></a>
+            <p>
+            The transistor acts as a gate for the high current provided by the 12V power source to the LED strip lights. 
+            </p>
+            <img src="a5 higher voltage circuit.jpg" width=400></a>
+            <p>
+            I used the IRemote library and the in class activity example code to program a different combination of LEDs turning on when a certain button on the remote is pressed. The button pressed on the remote can also been seen, printed to the serial monitor output. 
+            For this assignment, my input is the what the remote sends to the IR receiver when pressed, and my output is the LED lights turning on. Below is my code. 
+            <pre>
+            <code> 
+            	// I used our in-class IRemote library code and my A4 Code for this assignment
+
+              // Use IRemote library
+              #include <IRremote.h>
+
+              // Set variables to pin numbers
+              const int RECV_PIN = 7;         // IR receiver connected to pin 7
+              const int LED_PIN = 9;          // LED strip connected to transistor connected to pin 9
+
+              IRrecv irrecv(RECV_PIN);        
+              decode_results results;         
+              unsigned long key_value = 0;
+
+              void setup(){
+                // initialize IR receiver
+                irrecv.enableIRIn();
+                irrecv.blink13(true);
+                // initialize LED strip pin as output
+                pinMode(LED_PIN, OUTPUT);
+              }
+              void loop(){
+                // decode results of input from remote
+                if (irrecv.decode(&results)){
+                    // translate bits --> output case
+                    if (results.value == 0XFFFFFFFF)
+                      results.value = key_value;
+                      switch(results.value){
+                      // if 1 is pressed
+                      case 0xFF30CF:
+                      // turn on LED strip
+                      digitalWrite(LED_PIN, HIGH);
+                      break ;
+                      // if 2 is pressed
+                      case 0xFF18E7:
+                      // turn on LED strip to medium brightness
+                      analogWrite(LED_PIN, 100);
+                      break ;
+                      // if 3 is pressed
+                      case 0xFF7A85:
+                      // turn on LED strip to low brightness
+                      analogWrite(LED_PIN, 40);
+                      break ;
+                      // if 4 is pressed
+                      case 0xFF10EF:
+                      // fade LED strip to bright from min to max in increments of 5
+                      for (int fadeValue = 0 ; fadeValue <= 255; fadeValue += 5) {
+                        // sets the value (range from 0 to 255):
+                        analogWrite(LED_PIN, fadeValue);
+                        // wait for 30 milliseconds to see the dimming effect
+                        delay(30);
+                      }
+                      // fade LED strip from max to min in increments of 5
+                      for (int fadeValue = 255 ; fadeValue >= 0; fadeValue -= 5) {
+                        // sets the value (range from 0 to 255):
+                        analogWrite(LED_PIN, fadeValue);
+                        // wait for 30 milliseconds to see the dimming effect
+                        delay(30);
+                      }
+                      break ;
+                      // if 5 is pressed
+                      case 0xFF38C7:
+                      // fade out from max to min in increments of 5 points:
+                      for (int fadeValue = 255 ; fadeValue >= 0; fadeValue -= 5) {
+                        // sets the value (range from 0 to 255):
+                        analogWrite(LED_PIN, fadeValue);
+                        // wait for 30 milliseconds to see the dimming effect
+                        delay(30);
+                      }
+                      // fade bright from min to max in increments of 5 points      
+                      for (int fadeValue = 0 ; fadeValue <= 255; fadeValue += 5) {
+                        // sets the value (range from 0 to 255):
+                        analogWrite(LED_PIN, fadeValue);
+                        // wait for 30 milliseconds to see the dimming effect
+                        delay(30);
+                      }        
+                      break ;
+                      // if 6 is pressed
+                      case 0xFF5AA5:
+                      // blink LED strip 6 times, slowly
+                      for (int i = 0; i < 6; i++) {
+                        // turn LED strip on
+                        digitalWrite(LED_PIN, HIGH);
+                        // wait one second
+                        delay(1000);      
+                        // turn LED strip off
+                        digitalWrite(LED_PIN, LOW);
+                        // wait one second
+                        delay(1000);
+                      }
+                      break ;
+                      // if 7 is pressed
+                      case 0xFF42BD:
+                      // blink LED strip 10 times, quickly
+                      for (int i = 0; i < 10; i++) {
+                        // turn LED strip on
+                        digitalWrite(LED_PIN, HIGH);
+                        // wait 100 milliseconds
+                        delay(100);
+                        // turn LED strip off
+                        digitalWrite(LED_PIN, LOW);
+                        // wait 100 milliseconds
+                        delay(100);
+                      }
+                      break ;
+                      // if 8 is pressed
+                      case 0xFF4AB5:
+                      // blink from bright to dim to off 6 times quickly
+                      for (int i = 0; i < 6; i++) {
+                        // turn LED strip on, bright
+                        analogWrite(LED_PIN, 250);
+                        // wait 100 milliseconds
+                        delay(100);
+                        // turn LED strip on, dim
+                        analogWrite(LED_PIN, 50);
+                        // wait 100 milliseconds
+                        delay(100);
+                        // turn LED strip off
+                        analogWrite(LED_PIN, 0);
+                        // wait 100 milliseconds
+                        delay(100);
+                      }
+                      break ;
+                      // if 9 is pressed
+                      case 0xFF52AD:
+                      // turn off LED strip light
+                      digitalWrite(LED_PIN, LOW);
+                      break ;    
+                    }
+                    key_value = results.value;
+                    irrecv.resume();
+                }
+              }
+            </code>
+            </pre>
+        </div>
+        
+    </body>
+</html>
