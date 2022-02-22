@@ -24,7 +24,7 @@
             </p>
             <img src="a5 higher voltage schematic.jpg" width=400></a>
             <p>
-            The transistor acts as a gate for the high current provided by the 12V power source to the LED strip lights. 
+            The transistor acts as a gate for the high current provided by the 12V power source to the LED strip lights. Since the LED strip is a series of 3 white LEDs and a resistor, the current running through the strip would be the same. White LEDs have a 3.3 voltage drop, so three of them would mean a 9.9V drop. Since the power supply supplies 12V, factoring in the 9.9V drop, there is 2.1V going across the resistor. The resistor is 240 ohms. Using Ohm's law V = IR, we can calculate the current across, 2.1V/240 ohms = 0.00875 A, or 8.75 mA. As some of my remote control settings, the LED strip fades on and off. Since in analogWrite the loop increments by 5 from 0-255, the for loop loops 50 times, and ranges from 0-5V, meaning each loop the voltage increases by 0.1V. Since it loops 50 times and there's a delay of 30 milliseconds, fading on and off (two loops) 3 seconds.  
             </p>
             <img src="a5 higher voltage circuit.jpg" width=400></a>
             <p>
@@ -32,7 +32,7 @@
             For this assignment, my input is the what the remote sends to the IR receiver when pressed, and my output is the LED lights turning on. Below is my code. 
             <pre>
             <code> 
-            	// I used our in-class IRemote library code and my A4 Code for this assignment
+            	// I used our in-class IRemote library code and my A4 Code as reference/base code for this assignment
 
               // Use IRemote library
               #include <IRremote.h>
