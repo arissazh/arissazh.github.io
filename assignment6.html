@@ -18,12 +18,12 @@
             <h1>Arissa's Assignment 6!</h1>
             <p>
               Here's my keypad (arrow) controlled LEDs
-            <img src="a6.GIF" width=400></a>
             </p>
+		<img src="a6.GIF" width=400></a>
             <p>
               And here's my joystick controlled p5 output
-            <img src="a6-2.GIF" width=400></a>
             </p>
+	        <img src="a6-2.GIF" width=400></a>
             <p>
             My circuit for Assignment 6 uses a joystick to change the p5 page, and the arrow keys as input to turn on/off LEDs on with the arduino.  
             </p>
@@ -33,8 +33,7 @@
             </p>
             <img src="a6 circuit.jpg" width=400></a>
             <p>
-            JSON parsing is used to get coordinates from the joystick's serial input sent to p5, and controlling where on the screen an ellipse is. analogRead() takes input from x and y of the joystick (since joysticks are essentially two potentiometers). The numbers read reflect the position of the joystick. The two LEDs on the arduino are controlled by the right and left arrows of the laptop keypad in p5. By pressing the left arrow, the red LED turns on or off, while the right arrow turns the green LED on or off. 
-
+            JSON parsing is used to get coordinates from the joystick's serial input sent to p5, and controlling where on the screen an ellipse is. analogRead() takes input from x and y of the joystick (since joysticks are essentially two potentiometers). The numbers read reflect the position of the joystick. The two LEDs on the arduino are controlled by the right and left arrows of the laptop keypad in p5. By pressing the left arrow, the red LED turns on or off, while the right arrow turns the green LED on or off. Serial is used throughout to send information from the arduino to p5 and vice versa.
               Below is my arduino code, which uses some class code from the joystick in class activity.
             <pre>
             <code> 
