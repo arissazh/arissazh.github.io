@@ -1,0 +1,149 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+
+        <title>Arissa's HCDE 439 Physical Computing Page!</title> 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+	    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Poppins:wght@200;300&display=swap" rel="stylesheet">
+
+        <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
+
+    </head> 
+    <body> 
+
+        <div class="header">
+            <h1>Arissa's Final Project!</h1>
+            <p>
+              The thermobot displays time and date information, and when a button is pressed, changes to display temperature and humidity information. When the temperature is too cold, a blue LED turns on, and the temperature is too warm, a red LED turns on.
+            </p>
+		        <img src="final.GIF" width=400></a>
+            <h3>Concept</h3>
+            <p>
+            This project was inspired by my conditions living in a older dorm room, where the temperature tends to fluctuate, being either too cold or too hot. I wanted to create something that would tell me exactly how cold or hot it was in the room. As I was building the physical prototype, I realized that it kind of resembled a robot, which is how it resulted into being called the thermobot! When working on this project, there were several challenges and considerations I had to make. Since I used a lot of components, I had to worry about the number of pins I was using on the arduino, using a new component (the RTC Module), and figuring out how to wire buttons and the potentiometer to be hidden. 
+            </p>
+            <h3>Technical Implementation</h3>
+            <p>
+              I use several input components: a potentiometer, temperature & humidity sensor, RTC module, and button. My outputs are an LCD screen and two LEDs (red and blue). I used three libraries, for the DHT11 sensor, RTC module, and LCD. 
+              The potentiometer controls the brightness of the LCD screen. The temperature & humidity sensor and RTC module both provide the information to display on the LCD, and the button acts as a switch to control what information is displayed on the LCD screen. The two LEDs are only turned on in certain conditions, when the temperature is either too cold (below 15C/59F) or too hot (above 25C/77F). 
+            </p>
+            <img src="final schematic.jpg" width=400></a>
+            <p>
+            Resistor choice calculations were based off of previous assignments. For the red and blue LEDs, I calculated using Ohm's law V = I * R. Red LEDs have voltage drops of 1.8V, 3.2V/0.02A = 160 ohms, while blue LEDs have a higher voltage drop of 3.3, so I used the closest standard resistor of 220 ohms for both. As for  the button, I used a 10k ohm resistor--only a small amount of current is needed to signal on/off in the button, so a higher resistor does the job. The resistor for the LCD screen is also a 220 ohm resistor, following the in class examples we did. 
+            </p>
+            <p>
+            Below is my code for the firmware. 
+            <pre>
+            <code> 
+            	// This program uses LCD, DHT, and RTC libraries
+              // RTC module code also references from tutorial from arduinogetstarted
+
+              #include <LiquidCrystal.h>
+              #include <dht.h>
+              #include <Wire.h>
+              #include "RTClib.h"
+
+              // initialize special components, declare pins that are used
+              dht DHT;
+              #define DHT11_PIN 7 
+              LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+              RTC_DS1307 rtc;
+
+              const int buttonPin = 8;            // button connected to pin 8
+              int buttonState = 0;                // tracks the state of the button
+
+              int blue = 10;                      // blue LED connected to pin 10
+              int red = 9;                        // red LED connected to pin 9
+
+              void setup() {
+                // initialize components and pins
+                Serial.begin(9600);
+                lcd.begin(16, 2);
+                pinMode(buttonPin, INPUT);
+                pinMode(blue, OUTPUT);
+                pinMode(red, OUTPUT);
+
+                // check if RTC works
+                if (! rtc.begin()) {
+                  // if RTC is unable to start, print to serial monitor
+                  Serial.println("Couldn't find RTC");
+                  while (1);
+                }
+
+                if (!rtc.isrunning()) {
+                  // if RTC is not running, print to serial monitor
+                  Serial.println("RTC lost power, lets set the time!");
+                  // Following line sets the RTC to the date & time this sketch was compiled
+                  rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
+                }
+              }
+
+              void loop() {
+                buttonState = digitalRead(buttonPin);           // check the button's state
+                int chk = DHT.read11(DHT11_PIN);                // check temp and humidity
+                DateTime now = rtc.now();                       // check current time
+                // check the temperature
+                if (DHT.temperature < 15) {                     // if temperature is too cold
+                  digitalWrite(blue, HIGH);                     // turn on blue LED
+                  digitalWrite(red, LOW);                       // turn off red LED
+                } else if (DHT.temperature > 25) {              // if temperature is too hot
+                  digitalWrite(blue, LOW);                      // turn off blue LED
+                  digitalWrite(red, HIGH);                      // turn on red LED
+                } else {                                        // if temperature is in normal range
+                  digitalWrite(blue, LOW);                      // turn off blue LED
+                  digitalWrite(red, LOW);                       // turn off red LED
+                }
+                // if the button is not pressed (so default)
+                if (buttonState == HIGH) {
+                  int temp = (DHT.temperature * 9/5) + 32;      // convert temperature to fahrenheit
+                  lcd.print(temp);                              // display temperature in F on LCD
+                  lcd.print(' ');
+                  lcd.print((char)223);                         // print degree symbol
+                  lcd.print("F");
+                  lcd.setCursor(0, 1);                          // switch to next row on LCD
+                  lcd.print(DHT.humidity);                      // display relative humidity
+                  lcd.print((char)37);                          // print percentage symbol
+                  lcd.print(" RH");
+                  lcd.noCursor();                               // don't display cursor on screen
+                  delay(1000);                                  // wait one second
+                  lcd.clear();                                  // clear the screen
+                // if button is pressed
+                } else { 
+                  // convert time to PST
+                  DateTime PST (now - TimeSpan(0,16,0,0));      // subtract 16 hours
+                  lcd.print("Date: ");                          // display date: YY/MM/DD on LCD
+                  lcd.print(PST.year(), DEC);                   // print year
+                  lcd.print('/');
+                  lcd.print(PST.month(), DEC);                  // print month
+                  lcd.print('/');
+                  lcd.print(PST.day(), DEC);                    // print day
+                  lcd.print(' ');
+                  lcd.setCursor(0, 1);                          // switch to next row on LCD
+                  lcd.print("Time: ");                          // display time HH:MM:SS on LCD
+                  lcd.print(PST.hour(), DEC);                   // print hour
+                  lcd.print(':');
+                  lcd.print(PST.minute(), DEC);                 // print minute
+                  lcd.print(':');
+                  lcd.print(PST.second(), DEC);                 // print second
+                  delay(1000);                                  // wait one second
+                  lcd.clear();                                  // clear the screen
+                }
+              }        
+            </code>
+            </pre>
+            <h3>Execution</h3>
+            <img src="final circuit.jpg" width=200></a>
+            <img src="final in box.jpg" width=200></a>
+            <img src="final prototype.jpg" width=200></a> 
+            <p>
+            Above is the process of building my physical prototype. I first built the circuit, then tried to hide the wires and components in a box. I also switched to using a mini breadboard to better hide components. 
+            </p>
+            <h3>Video Demo</h3>
+            <iframe width="420" height="315"
+            src="https://www.youtube.com/watch?v=zLlqb4PCyQI>
+            </iframe>
+        </div>   
+    </body>
+</html>
