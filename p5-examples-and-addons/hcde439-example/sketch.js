@@ -1,5 +1,5 @@
 var serial; // variable to hold an instance of the serialport library
-var portName = '/dev/ttyACM0' //rename to the name of your port
+var portName = '/dev/tty.usbmodem141201' //rename to the name of your port
 var datain; //some data coming in over serial!
 var xPos = 0;
 
@@ -71,10 +71,10 @@ function graphData(newData) {
 function draw() {
   background(0);
   fill(255);
-
-  if (datain == 0) {
-      text("button pressed: YES", 30,30);
-  } else {
-      text("button pressed: NO", 30,30);
-  }
+  text("sensor value: " + datain, 30, 30)
+  // if (datain == 0) {
+  //     text("button pressed: YES", 30,30);
+  // } else {
+  //     text("button pressed: NO", 30,30);
+  // }
 }
