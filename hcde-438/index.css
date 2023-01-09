@@ -1,10 +1,78 @@
+html, body {
+  margin-top: 0;
+  padding: 0 0 0 0;
+  font-family: 'Poppins', sans-serif;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /* text-align: center; */
+}
+
+.page-container {
+  font-family: 'Poppins', sans-serif;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  }
+
 .picture {
-  width: 300px;
+  width: 200px;
   border: 1px solid black;
   border-radius: 10px;
   cursor: pointer;
   object-fit: cover;
   aspect-ratio: 1;
+}
+
+pre {
+  text-align: left;
+}
+
+h1, h2, h3 {
+  font-family: 'Poppins', sans-serif;
+}
+
+h2, h3 {
+  text-align: left;
+}
+
+ul {
+  font-family: 'Poppins', sans-serif;
+  list-style-type: none;
+  margin-top: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color:rgb(210, 194, 220);
+}
+
+li {
+  float: right;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  color: white;
+  background-color:rgb(231, 223, 237);
+}
+
+.improvements {
+  float: left;
+  text-align: left;
+  overflow: auto;
+}
+
+.improvements li {
+  float: left;
+
 }
 
 .picture:hover {
@@ -15,13 +83,23 @@
   display: flex;
   flex-wrap: wrap;
   width: 80%; 
-  gap: 12px;
+  gap: 30px;
 }
+
+.picture-container a {
+  color: #000;
+  text-decoration: none;
+}
+
 
 body {
   background-color: white;
   font-family: Arial, Helvetica, sans-serif;
   color: black;
+}
+
+p {
+  text-align: left;
 }
 
 .page-container {
