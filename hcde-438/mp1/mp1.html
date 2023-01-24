@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Poppins:wght@200;300&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/portfolio-logo.png">
+    <link rel="stylesheet" href="/hcde-438/mp1/mp1.css" />
+  </head>
+  <body>
+    <div class="page-container">
+      <h1>MP1 Writeup: Moomin Summoner</h1>
+        <p>
+            This project is a Chrome web extension that "summons" or adds a Moomin character gif to the page. 
+            It is accessible for download and use <a href="https://github.com/arissazh/webextension">here</a>. 
+            It builds off of the class blocker extension example. 
+        </p>
+        <img src="/hcde-438/mp1/mp1.gif" width="500">
+        <p>
+            Originally I wanted to create an extension that turns the page into a purple theme, which involved changing the pages' background, fonts, etc. 
+            I started out by cloning the example repository and using the background-colorizer example. However, I kept running into a tab query issue with the Google Chrome API, 
+            so I decided to switch to my other idea, an extension that added Moomin characters to the screen. 
+            I then used the blocker extension example from class. I wanted to use the block shape from that extension to put my Moomin images on there, as that was the most efficient way
+            I could think of to add something moveable and adjustable onto the page screen. I knew that I wanted the user to be able to toggle it on/off, so 
+            the popup UI was kept quite similar to the class example. 
+            Eventually, with most of the bugs resolved, my extension looked something like this: 
+        </p>
+        <img src="/hcde-438/mp1/mp1basic.png" width="500">
+        <p>
+            At this point, it looked basically like the block extension example, aside from an added photo. I wanted to make it more on theme, so I made a few personalizations. After making minor UI changes with the popup font, I wanted to simplify some details--I changed the drag and delete buttons to '+' and 'x' respectively, 
+            made some color and font edits, and played around with the alignment of the gif inside of the block. I also wanted there to be a different image to be generated when multiple
+            blocks were added to the screen. I did this by adding a function in the code to random select one of the photos I had in an array, resulting in the ability for different images to show on the screen. 
+        </p>
+        <img src="/hcde-438/mp1/mp1animated.gif" width="500">
+      <h2>Issues</h2>
+      <p>
+        The biggest issue I had was with the Google Chrome API and an error with tab querying. This was related to the tab.id code in popup.js, which basically ensured that changes were made on the current tab. 
+        When testing with the example code, I also occasionally ran into this error as well. I kept getting an "underfined" reading from tab.id, and tried to resolve this by printing the value to the console (which returned an error), 
+        testing with example code, redoing my code, restarting... Eventually I found that refreshing the current tab every time before trying to activate the extension was a workaround. 
+        </p>
+        <img src="/hcde-438/mp1/taberror.png" width="500">
+       <p>
+        I also had an issue with images not loading in the block. Originally in my repository, I had an image folder with the images I wanted the extension to be able to generate. However, I found that whenever loading the page, 
+        the image would be blank. The images were correctly written in HTML on the page, as 
+        when I provided an alt text that was able to load. I tried various ways to create the img element in HTML through the js file, however, I was unable to load the image. 
+        I used the browser's developer tools--inspecting the page--and found that the reference pathway kept trying to search from the webpage I was on. As a workaround, I found that hyperlinks to external image sites were able to load, so I instead
+        used images that were not saved locally in the repository. Through this, I was able to learn how to use the developer tools as a way to debug issues in my code and find possible workarounds. 
+      </p>
+      <img src="/hcde-438/mp1/imageerror.png" width="500">
+      <br>
+      <img src="/hcde-438/mp1/imagepaths.png" width="500">
+      <h2>Future Improvements</h2>
+        <ul class="improvements" style="list-style-type: disc;">
+            <li>A more refined UI! It's cute but there are some details that could be nicer</li>
+            <li>More customization possibilities, such as the ability to choose colors, a note, etc.</li>
+            <li>If I could get a transparent background behind the Moomin image instead of a neutral colored block...</li>
+        </ul>
+    <h2>Kudos</h2>
+        <p>
+          <a href="https://github.com/branchwelder/extension-toolkit">Class examples</a> and <a href="https://stackoverflow.com/questions/7350363/select-a-random-string-from-an-array">Random Arrays</a>
+        </p>
+    </div>
+  </body>
+</html>
