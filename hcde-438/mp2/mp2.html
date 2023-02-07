@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Poppins:wght@200;300&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/portfolio-logo.png">
+    <link rel="stylesheet" href="/hcde-438/mp2/mp2.css" />
+  </head>
+  <body>
+    <div class="page-container">
+      <h1>MP2 Writeup: Creative Code Sketches</h1>
+        <p>
+            This project uses the <a href="https://github.com/arissazh/webextension">P5.js library</a> to create six different sketches. The projects can be accessed <a href="/hcde-438/mp2/sketchgallery.html">here</a> through my sketch gallery.
+        </p>
+        <img src="/hcde-438/mp2/photos/mp2.gif" width="500">
+        <p>
+            There are six sketches total, each building off of the previous sketch.
+            <ul class="sketchlist" style="list-style-type: disc;">
+              <li>A static pattern of white daisies</li>
+              <li>A static, random-colored daisy pattern across the screen--will look different every time!</li>
+              <li>An infinite loop of random colored daisies being placed onto the page randomly</li>
+              <li>An interactive screen where once clicked, random colored daisies are placed</li>
+              <li>A single daisy that plays a note of "Twinkle Twinkle Little Star" each time it is clicked, turning the petals purple</li>
+              <li>Seven daisies that change petal colors when hovered over or clicked, and each play a note corresponding to C-Major</li>
+          </ul> 
+        </p>
+        <img src="/hcde-438/mp2/photos/gallery.png" width="500">
+        <p>
+            I started with creating the sketches on the p5js editor site, and then transferred them into my github repo to make sure they worked properly. 
+            Along the way, I had to start over occaisionally due to the page refreshing adn sketches not saving, as well as having to redo parts of the sketches to meet assignment requirements. 
+        </p>
+        <img src="/hcde-438/mp2/photos/issue-1.png" width="500">
+      <h2>Issues</h2>
+      <p>
+        After reading the assignment requirements, I realized that I had to make sure resizing the window would also make changes to my sketches. WHen I had started the sketches, 
+        I used the default canvas sizes of 400x400, so when creating my original daisy pattern, I used a for loop that iterated five times, since I knew that five flowers would span the whole canvas size. 
+        However, after changing the canvas size to be windowWidth by windowHeight, my pattern started offsetting, probably due me using translate and mathematical calculations to move the starting position back each time.  
+        </p>
+        <img src="/hcde-438/mp2/photos/issue-2.png" width="500">
+       <p>
+        I tried to fix the alignment of the pattern by adding values to the translate function, and while I was able to get the pattern to align, it would have messed up when resizing the window again. 
+      </p>
+      <img src="/hcde-438/mp2/photos/issue-4.png" width="500">
+      <p>
+        I resolved this issue by adding a function that created a list of x coordinates and y coordinates where I wanted the flowers to be placed. When the flowers were drawn, they would be
+        passed coordinates based on where in the for loop for reading through the coordinate list. This required a lot of debugging as I had to make sure the two lists were being read properly, 
+        so I used console logging quite a lot during this phase. However, once I got it working, it resolved the window resizing pattern issue!
+      </p>
+      <img src="/hcde-438/mp2/photos/issue-5.png" width="500">
+      <h2>Future Improvements</h2>
+        <ul class="improvements" style="list-style-type: disc;">
+            <li>I originally wanted to make the interactive daisies rotate rather than being drawn on, it would be cool to build on this</li>
+            <li>The daisy sizes in my sixth piano sketch don't resize with smaller windows, so maybe they can grow and shrink accordingly</li>
+            <li>A wider variety of sketches!</li>
+        </ul>
+    <h2>Kudos</h2>
+      <ul class="kudos" style="list-style-type: disc;">
+        <li><a href=https://github.com/branchwelder/sketches>Gallery example</a></li>
+        <li><a href="https://p5js.org/libraries/">p5js reference library</a></li>
+        <li><a href="https://editor.p5js.org/branchwelder/sketches/YbgZ19uns">Class examples!</a></li>
+    </ul>
+    </div>
+  </body>
+</html>

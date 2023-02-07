@@ -1,7 +1,7 @@
-# HCDE 439 Physical Computing Winter 2021
+# Arissa Zheng's Portfolio 
 
-**Instructor:** Nadya Peek
+**Includes work from:**
+- HCDE 439: Physical Computing
+- HCDE 438: Web Technologies
 
-**Teaching assistant:** Blair Subbaraman
 
-This is an example of a student page for HCDE439. Feel free to use this as a template, or create your own!
