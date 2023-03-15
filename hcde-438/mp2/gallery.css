@@ -48,3 +48,52 @@
     width: 100%;
     display: block;
   }
+  .navbar li a:hover {
+    color: white;
+    background-color:rgb(231, 223, 237);
+  }
+
+  .navbar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  .navbar{
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    margin:auto;
+    z-index: 1;
+    overflow: hidden;
+}
+.navbar .max-width{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.navbar .logo a{
+    color: #fff;
+    font-size: 35px;
+    font-weight: 600;
+    opacity: 90%;
+}
+.navbar menu {
+  padding-left: 10px;
+}
+.navbar .menu li{
+    list-style: none;
+    display: inline-block;
+    margin:0px;
+    
+}
+.navbar .menu li a{
+    color: #fff;
+    float: left;
+    opacity: 90%
+}
+
+.navbar li {
+  margin-right: 10px;
+}

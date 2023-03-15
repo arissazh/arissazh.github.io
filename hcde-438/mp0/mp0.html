@@ -1,50 +1,81 @@
-<html>
-  <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Poppins:wght@200;300&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="/portfolio-logo.png">
-    <link rel="stylesheet" href="/hcde-438/mp0/mp0.css" />
-  </head>
-  <body>
-    <div class="page-container">
-      <h1>MP0 Writeup</h1>
-        <p>
-            For this assignment, I was to create a portfolio website, hosted via Github, to document my projects and work throughout the quarter. 
-            In a previous course, I already created a portfolio site using Github, so I used what I had from HCDE 439 as a framework to guide me with this time. 
-            I started out by creating a new index.html file as a new home page for the site, which could then direct a user to my HCDE 439 or HCDE 438 work. Below is what my
-            site looked like when it started out. 
-        </p>
-        <img src="/hcde-438/mp0/originalportfolio.png" width="500">
-        <p>
-            I then used the in-class MP0 example template to help create my HCDE 438 portfolio sub-page. Both of my portfolios required an 'About Me' page, so to consolidate the two, I decided to create a navigation bar in the header which
-            could make the about page accessible on both porfolio sub-pages, as well as function as a shortcut back to the Home page or to my UX portfolio (on a different site). 
-        </p>
-        <img src="/hcde-438/mp0/in-progress.png" width="500">
-        <p>
-            My last step was working on the CSS to make sure my pages were, in general, consistent with each other, looked okay, and met assignment requirements. 
-        </p>
-      <h2>Issues</h2>
-      <p>
-        One issue I had originally was trying to figure out how I would be able to display my projects from both courses on the site; I was choosing between creating a home page and making the two courses as a subpage, 
-        or to have the projects divided into two sections on one page instead. I had a bit of trouble figuring out how I should do those, as I had a lot of files already from my 439 portfolio, so I decided to just create one home page that directs the user to the respective course projects. 
-        However, because I kept changing the location of the files (in and out of folders, changing names to be more organized, and accessing pages outside of set folders), I struggled a bit with making sure all clicks and links redirected to the correct pages. 
-        There were many times while I was developing that I would have to go back and make sure a click was linked to the correct html page. 
-      </p>
-      <h2>CSS Transition</h2>
-      <p>
-        For my CSS transition, I decided to work with the title on the home page since it was pretty plain--I wanted to add something interesting to it. 
-        I looked up text animations and got a bunch of different types, but I decided to work with color changing as I thought it would fit best with the way my portfolio looked, as something minimalistic but still colorful. 
-        In order to make each of the words change to a different color, in the HTML code, each word that I wanted to change had to be separated as a different class, in this case, labeled as "title-word-#". 
-        In the CSS, .title-word gave the animation settings, while the style statements for each of the words (1, 2, 3) specified the three colors the words should rotate through. The animation ends up looking as below. 
-      </p>
-      <img src="/hcde-438/mp0/css-transition.gif" width="500">
-      <h2>Future Improvements</h2>
-        <ul class="improvements" style="list-style-type: disc;">
-            <li>More consistency throughout the pages</li>
-            <li>Improve the overall design system/theme to be more like UX portfolio</li>
-            <li>Figure out how to have the header throughout the whole site (without messing up other features)</li>
-        </ul>
-    </div>
-  </body>
-</html>
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+
+        <title>Arissa's Dev Portfolio</title> 
+	    <link rel="preconnect" href="https://fonts.googleapis.com">
+	    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Poppins:wght@200;300&display=swap" rel="stylesheet">
+        <link href="/438.css" media="screen" rel="stylesheet" type="text/css" />
+        <link rel="icon" type="image/x-icon" href="portfolio-logo.png">
+    </head> 
+    <body> 
+      <nav class="navbar">
+        <div class="max-width">
+            <ul class="menu" style="padding-left: 10px">
+                <li><a href="/index.html">home</a></li>
+                <li><a href="/bio/bio.html">about</a></li>
+                <li><a href="/hcde439.html">hcde 439</a></li>
+                <li><a href="/hcde438.html">hcde 438</a></li>
+            </ul>
+        </div>
+    </nav>
+
+        <br><br><br><br>
+        <div class="header">
+          <h1 class="title-word">
+            <span class="title-word title-word-1">mp0:</span>
+            <span class="title-word title-word-2">my</span>
+            <span class="title-word title-word-3">portfolio ◡̈</span>
+        </h1>
+        </div>
+        <div class="page-container"> 
+          <img src="/hcde-438/mp0/originalportfolio.png" alt="screenshot of my original portfolio" width="300"> 
+          <p> For this assignment, I was to create a portfolio website, hosted via Github, to document my projects and work throughout the quarter. 
+            In a previous course, I already created a portfolio site using Github, so I used what I had from HCDE 439 as a framework to guide me 
+            with this time. I started out by creating a new index.html file as a new home page for the site, which could then direct a user to my 
+            HCDE 439 or HCDE 438 work. Above is what my site looked like when it started out. 
+          </p> 
+          <h2>My Development Process</h2> 
+          <ul class="improvements" style="list-style-type: disc;"> 
+            <li>Add new main html page to divide two courses</li> 
+            <li>Use MP0 example to create 438 course page</li> 
+            <li>UI customization</li> 
+            <li>Make sure all links redirect</li> 
+          </ul> 
+          <p> I then used the in-class MP0 example template to help create my HCDE 438 portfolio sub-page. Both of my portfolios required 
+            an 'About Me' page, so to consolidate the two, I decided to create a navigation bar in the header which could make the about 
+            page accessible on both porfolio sub-pages, as well as function as a shortcut back to the Home page or to my UX portfolio 
+            (on a different site). </p> 
+          <img src="/hcde-438/mp0/in-progress.png" alt="screenshot of my in-progress portfolio page" width="300"> 
+          <p> My last step was working on the CSS to make sure my pages were, in general, consistent with each other, looked okay, 
+            and met assignment requirements. </p> 
+          <h2>Issues</h2> 
+          <p> One issue I had originally was trying to figure out how I would be able to display my projects from both courses on the 
+            site; I was choosing between creating a home page and making the two courses as a subpage, or to have the projects divided 
+            into two sections on one page instead. I had a bit of trouble figuring out how I should do those, as I had a lot of files 
+            already from my 439 portfolio, so I decided to just create one home page that directs the user to the respective course 
+            projects. However, because I kept changing the location of the files (in and out of folders, changing names to be more 
+            organized, and accessing pages outside of set folders), I struggled a bit with making sure all clicks and links redirected 
+            to the correct pages. There were many times while I was developing that I would have to go back and make sure a click was 
+            linked to the correct html page. </p> 
+            <h2>CSS Transition</h2> 
+            <p> For my CSS transition, I decided to work with the title on 
+              the home page since it was pretty plain--I wanted to add something interesting to it. I looked up text animations and got a 
+              bunch of different types, but I decided to work with color changing as I thought it would fit best with the way my portfolio 
+              looked, as something minimalistic but still colorful. In order to make each of the words change to a different color, in the 
+              HTML code, each word that I wanted to change had to be separated as a different class, in this case, labeled as "title-word-#". 
+              In the CSS, .title-word gave the animation settings, while the style statements for each of the words (1, 2, 3) specified the 
+              three colors the words should rotate through. The animation ends up looking as below. </p> 
+          <img src="/hcde-438/mp0/css-transition.gif" alt="gif of my transition implemented" width="300"> 
+          <h2>Future Improvements</h2> 
+          <ul class="improvements" style="list-style-type: disc;"> 
+            <li>More consistency throughout the pages</li> 
+            <li>Improve the overall design system/theme to be more like UX portfolio</li> 
+            <li>Figure out how to have the header throughout the whole site (without messing up other features)</li> 
+          </ul> 
+        </div> 
+      </body>
+    </html>

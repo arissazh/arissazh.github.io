@@ -1,40 +1,61 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Poppins:wght@200;300&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="/portfolio-logo.png">
-    <link rel="stylesheet" href="/hcde-438/mp1/mp1.css" />
-  </head>
-  <body>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+    <title>Arissa's Dev Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Poppins:wght@200;300&display=swap" rel="stylesheet">
+    <link href="/438.css" media="screen" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/x-icon" href="portfolio-logo.png">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="max-width">
+        <ul class="menu" style="padding-left: 10px">
+            <li><a href="/index.html">home</a></li>
+            <li><a href="/bio/bio.html">about</a></li>
+            <li><a href="/hcde439.html">hcde 439</a></li>
+            <li><a href="/hcde438.html">hcde 438</a></li>
+        </ul>
+    </div>
+</nav>
+    <br><br><br><br>
+    <div class="header">
+      <h1 class="title-word">
+        <span class="title-word title-word-1">fp1:</span>
+        <span class="title-word title-word-2">final</span>
+        <span class="title-word title-word-3">prototype ◡̈</span>
+    </h1>
+    </div>
     <div class="page-container">
-      <h1>FP1: Final Project Prototype</h1>
-        <img src="/hcde-438/fp1/fp1.gif">
+        <img src="/hcde-438/fp1/fp1.gif" width="300">
         <p>
-          This project builds off of my MP3 game by adding a leaderboard and score saver. In this prototype version, I improved my game over screen, 
-        added an input name function to let users save their score to the database, and display a leaderboard. 
+          This project builds off of my MP3 game by adding a leaderboard and score saver. In this prototype version, I improved my game over screen,
+        added an input name function to let users save their score to the database, and display a leaderboard.
           My minigame can be played <a href="https://arissazh.github.io/final-prototype/">here</a> through my website!
           Here is my <a href="https://github.com/arissazh/final-prototype">prototype repository</a>!
         </p>
         <h2>Project Scope</h2>
         <p>During my initial planning phase, I think I had more ambition for the number of screens I would create; however, as I worked
             on the prototype, I decided to not have users create accounts as the purpose of score-saving did not require such complicated screens and steps.
-            I narrowed my project scope to be less complicated on the score-saving side, and want to refocus for the next part on improving UI and user game experience. 
+            I narrowed my project scope to be less complicated on the score-saving side, and want to refocus for the next part on improving UI and user game experience.
         </p>
         <h2>Time Management</h2>
-        <p>I was able to complete everything I anticipated in this prototyping phase. It was difficult to know where and how to get started with Firebase, but after better understanding the 
-            documentation, I was able to slowly figure things out. The pages have mininal CSS styling and are not perfect, but the functions and features I want are all basically there. 
+        <p>I was able to complete everything I anticipated in this prototyping phase. It was difficult to know where and how to get started with Firebase, but after better understanding the
+            documentation, I was able to slowly figure things out. The pages have mininal CSS styling and are not perfect, but the functions and features I want are all basically there.
         </p>
         <h2>Implementation Plan</h2>
         <p>My implementation for mny final version hasn't changed too much--I am still focusing on the overall styling and game experience for the second part, although since I made changes to how
             the interface looks (centered on the screen), there might be a few new considerations to make when styling. Otherwise, my plan is to start with adding the fruit preview game feature, then spending
-            the rest of my time on adding game instructions, screen styling, and finally, any special effects. 
+            the rest of my time on adding game instructions, screen styling, and finally, any special effects.
         </p>
         <h2>
             My Development Process
         </h2>
-        <img src="/hcde-438/fp1/fp1-1.png" height="500">
-        <img src="/hcde-438/fp1/fp1-2.png" height="500">
+        <img src="/hcde-438/fp1/fp1-1.png" height="400" alt="in-progress screenshot of my game over screen">
+        <img src="/hcde-438/fp1/fp1-2.png" height="400" alt="screenshot of game over screen with leaderboard and score">
         <ul class="improvements" style="list-style-type: disc;">
           <li>Created a new repository, then cloning MP3 into it</li>
           <li>Create a Firebase project, setting up Firestore, and installing necessary modules into repo</li>
@@ -51,8 +72,8 @@
         During this project, one of the biggest issues I ran into was with deployment. Originally, I was building with vite (it ran successfully). However,
         when trying to deploy to gh-pages, it wasn't properly adding the necessary files to the dist folder. When looking in the dist folder (and through dev tools), I realized that it
         was creating some other index.js file that did not have my code, and the console gave me a 404 error. As an alternative approach, I instead reverted back to using rollup
-        as it had worked for me during MP3. I kept running into a "cannot import outside of module" error. Following the terminal error message, this was able to be resolved by (1) changing the 
-        homepage link in the package.json and (2) adding a --bundleConfigAsCjs onto the build command. These overall seemed to be more logic errors. 
+        as it had worked for me during MP3. I kept running into a "cannot import outside of module" error. Following the terminal error message, this was able to be resolved by (1) changing the
+        homepage link in the package.json and (2) adding a --bundleConfigAsCjs onto the build command. These overall seemed to be more logic errors.
         </p>
       <h2>Future Improvements</h2>
         <ul class="improvements" style="list-style-type: disc;">
@@ -63,7 +84,7 @@
             <li>Improved styling and interface</li>
         </ul>
     <h2>Kudos</h2>
-        <ul class="kuods" style="list-style-type: disc;">
+        <ul class="improvements" style="list-style-type: disc;">
           <li>Thanks Andy for helping me figure out my deployment issue</li>
           <li>Thanks to Han for helping with building</li>
           <li>Dev Toolkit & Firebase in-class exercise</li>
@@ -71,4 +92,5 @@
         </ul>
     </div>
   </body>
-</html>
+ </html>
+ 

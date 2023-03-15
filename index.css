@@ -1,150 +1,377 @@
-
 html, body {
-    margin-top: 0;
-    padding: 0 0 0 0;
-    font-family: 'Poppins', sans-serif;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-  } 
+  margin-top: 0;
+  padding: 0 0 0 0;
+  font-family: 'Poppins', sans-serif;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  justify-content: center;
+}
+
+.page-container {
+  font-family: 'Poppins', sans-serif;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  }
 
 .picture {
-    width: 150px;
-    border: 1px solid black;
-    border-radius: 10px;
-    cursor: pointer;
-    object-fit: cover;
-    aspect-ratio: 1;
+  width: 200px;
+  border: 1px solid rgb(128, 97, 147);
+  border-radius: 10px;
+  cursor: pointer;
+  object-fit: cover;
+  aspect-ratio: 1;
+}
+
+pre {
+  text-align: left;
+}
+code{
+  width
+}
+
+h1, h2, h3 {
+  font-family: 'Poppins', sans-serif;
+}
+
+h2 {
+  margin-top: 15px;
+}
+
+
+.header {
+  background: #fff;
+  color: rgb(159, 93, 93);
+  height: auto;
+  margin:auto;
+  margin-bottom: 20px;
+  width:80%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.title-word {
+  animation: color-animation 4s linear infinite;
+  margin-bottom: 10px;
+}
+
+.title-word-1 {
+  --color-1: #DF8453;
+  --color-2: #3D8DAE;
+  --color-3: #E4A9A8;
+}
+
+.title-word-2 {
+  --color-1: #DBAD4A;
+  --color-2: #ACCFCB;
+  --color-3: #17494D;
+}
+
+.title-word-3 {
+  --color-1: #ACCFCB;
+  --color-2: #E4A9A8;
+  --color-3: #ACCFCB;
+}
+
+@keyframes color-animation {
+  0%    {color: var(--color-1)}
+  32%   {color: var(--color-1)}
+  33%   {color: var(--color-2)}
+  65%   {color: var(--color-2)}
+  66%   {color: var(--color-3)}
+  99%   {color: var(--color-3)}
+  100%  {color: var(--color-1)}
+}
+
+.header h1 {
+  font-size: 40px;
   }
-  
-  .picture:hover {
-    filter: brightness(80%);
-  }
+
+
+.course a:hover {
+  background: rgb(210, 194, 220);
+  color: rgb(210, 194, 220);
+  text-decoration: none;
+
+}
+
+/* Change the link color to #111 (black) on hover */
+.navbar li a:hover {
+  color: white;
+  background-color:rgb(231, 223, 237);
+}
+
+.navbar li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar{
+  position: fixed;
+  width: 100%;
+  background-color: rgb(210, 194, 220);
+  font-family: 'Poppins', sans-serif;
+  margin:auto;
+  z-index: 1;
+  overflow: hidden;
+}
+.navbar .max-width{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.navbar .logo a{
+  color: #fff;
+  font-size: 35px;
+  font-weight: 600;
+  opacity: 90%;
+}
+.navbar menu {
+  justify-content: center;
+padding-left: 10px;
+}
+.navbar .menu li{
+  list-style: none;
+  display: inline-block;
+  margin:0px;
+}
+.navbar .menu li a{
+  color: #fff;
+  float: right;
+  opacity: 90%;
+  padding:10px ;
+}
+
+.navbar li {
+margin-right: 10px;
+}
+
+.picture-container a img:hover {
+  background: rgb(210, 194, 220);
+  border: rgb(114, 54, 151);
+  text-decoration: none;
+
+}
+.picture:hover {
+  filter: brightness(80%);
+}
+
+.picture-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%; 
+  gap: 30px;
+  margin:auto;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.picture-container a {
+  color: #000;
+  text-decoration: none;
+}
+.page-container {
+  width: 80%;
+  margin-top: 5rem;
+  margin: auto;
+}
+
 
 h1,h2,h3,h4 {
-    font-family: 'Poppins', sans-serif;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    }
-  
-    ul {
-        font-family: 'Poppins', sans-serif;
-        list-style-type: none;
-        margin-top: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color:rgb(210, 194, 220);
-      }
-      
-      li {
-        float: right;
-      }
-      
-      li a {
-        display: block;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-      }
-      
-      /* Change the link color to #111 (black) on hover */
-      li a:hover {
-        color: white;
-        background-color:rgb(231, 223, 237);
-      }
-    
-  a {
-    color: rgb(139, 112, 182);
-  }
-  
-  .header {
-    background: #fff;
-    color: rgb(159, 93, 93);
-    height: auto;
+  font-family: 'Poppins', sans-serif;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
   }
 
-  .title-word {
-    animation: color-animation 4s linear infinite;
-  }
   
-  .title-word-1 {
-    --color-1: #DF8453;
-    --color-2: #3D8DAE;
-    --color-3: #E4A9A8;
-  }
-  
-  .title-word-2 {
-    --color-1: #DBAD4A;
-    --color-2: #ACCFCB;
-    --color-3: #17494D;
-  }
-  
-  .title-word-3 {
-    --color-1: #ACCFCB;
-    --color-2: #E4A9A8;
-    --color-3: #ACCFCB;
-  }
-  
-  @keyframes color-animation {
-    0%    {color: var(--color-1)}
-    32%   {color: var(--color-1)}
-    33%   {color: var(--color-2)}
-    65%   {color: var(--color-2)}
-    66%   {color: var(--color-3)}
-    99%   {color: var(--color-3)}
-    100%  {color: var(--color-1)}
-  }
+a {
+  color: rgb(139, 112, 182);
+}
 
-  .header h1 {
-    font-size: 40px;
-    }
+.courselist {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: auto;
+  gap: 50px;
+  margin-top: 20px;
+}
 
-    hr {
-        width: 30%;
-        border-top: 1px dotted rgb(119, 79, 144);
-    }
-  
-  .course a:hover {
-    background: rgb(210, 194, 220);
-    color: rgb(210, 194, 220);
-    text-decoration: none;
-  }
-  
-  .footer {
-      width: 1100px;
-      float: left;
-      padding: 300px 0px 30px 30px;
-  }
-  
-  body {
-    background-color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    color: black;
-  }
-  
-  .page-container {
-    width: 80%;
-    margin-top: 5rem;
-    margin: auto;
-  }
 
-  button { 
-    background-color: rgb(210, 194, 220);
-    padding: 10px 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border: none;
-    border-radius: 4px;
-  }
+.title-word {
+  animation: color-animation 4s linear infinite;
+  margin-bottom: 10px;
+}
+
+.title-word-1 {
+  --color-1: #DF8453;
+  --color-2: #3D8DAE;
+  --color-3: #E4A9A8;
+}
+
+.title-word-2 {
+  --color-1: #DBAD4A;
+  --color-2: #ACCFCB;
+  --color-3: #17494D;
+}
+
+.title-word-3 {
+  --color-1: #ACCFCB;
+  --color-2: #E4A9A8;
+  --color-3: #ACCFCB;
+}
+
+@keyframes color-animation {
+  0%    {color: var(--color-1)}
+  32%   {color: var(--color-1)}
+  33%   {color: var(--color-2)}
+  65%   {color: var(--color-2)}
+  66%   {color: var(--color-3)}
+  99%   {color: var(--color-3)}
+  100%  {color: var(--color-1)}
+}
+
+.course a:hover {
+  background: rgb(210, 194, 220);
+  color: rgb(210, 194, 220);
+  text-decoration: none;
+
+}
+
+
+
+
+/* Change the link color to #111 (black) on hover */
+.navbar li a:hover {
+  color: white;
+  background-color:rgb(231, 223, 237);
+}
+
+.navbar li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar{
+  position: fixed;
+  width: 100%;
+  background-color: rgb(210, 194, 220);
+  font-family: 'Poppins', sans-serif;
+  margin:auto;
+  z-index: 1;
+  overflow: hidden;
+}
+.navbar .max-width{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.navbar .logo a{
+  color: #fff;
+  font-size: 35px;
+  font-weight: 600;
+  opacity: 90%;
+}
+.navbar menu {
+padding-left: 10px;
+}
+.navbar .menu li{
+  list-style: none;
+  display: inline-block;
+  margin:0px;
   
-  button:hover {
-    background-color: rgb(230, 221, 235);
-    color: rgb(153, 129, 168);
-  }
-  
+}
+.navbar .menu li a{
+  color: #fff;
+  float: left;
+  opacity: 90%
+}
+
+.navbar li {
+margin-right: 10px;
+}
+
+.resources a {
+  text-decoration: none;
+}
+
+code {
+  block-size: auto;
+}
+
+html, body {
+  margin-top: 0;
+  padding: 0 0 0 0;
+  font-family: 'Poppins', sans-serif;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+ 
+}
+
+
+.picture {
+  width: 150px;
+  border: 1px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+  object-fit: cover;
+  aspect-ratio: 1;
+}
+
+
+ .picture:hover {
+  filter: brightness(80%);
+}
+
+ 
+a {
+  color: rgb(139, 112, 182);
+}
+
+.courselist {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: auto;
+  gap: 50px;
+  margin-top: 20px;
+}
+ .header {
+  background: #fff;
+  color: rgb(159, 93, 93);
+  height: auto;
+  margin-bottom: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+
+
+ .course a:hover {
+  background: rgb(210, 194, 220);
+  color: rgb(210, 194, 220);
+  text-decoration: none;
+}
+
+
+
+.page-container {
+  width: 80%;
+  margin-top: 5rem;
+  margin: auto;
+}

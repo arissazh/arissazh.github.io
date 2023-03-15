@@ -2,11 +2,11 @@
   width: 300px;
   border-radius: 10px;
   object-fit: cover;
+  align-self: center;
   aspect-ratio: 1;
 }
 
 .bio-container {
-  display: flex;
   width: 80%;
   margin: auto;
   margin-top: 5rem;
@@ -20,20 +20,12 @@ body {
   color: black;
 }
 
-ul {
-  font-family: 'Poppins', sans-serif;
-  list-style-type: none;
-  margin-top: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color:rgb(210, 194, 220);
+.navbar li a:hover {
+  color: white;
+  background-color:rgb(231, 223, 237);
 }
 
-li {
-  float: right;
-}
-
-li a {
+.navbar li a {
   display: block;
   color: white;
   text-align: center;
@@ -41,8 +33,44 @@ li a {
   text-decoration: none;
 }
 
-/* Change the link color to #111 (black) on hover */
-li a:hover {
-  color: white;
-  background-color:rgb(231, 223, 237);
+.navbar{
+  position: fixed;
+  width: 100%;
+  background-color: rgb(210, 194, 220);
+  font-family: 'Poppins', sans-serif;
+  margin:auto;
+  z-index: 1;
+  overflow: hidden;
+}
+.navbar .max-width{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.navbar .logo a{
+  color: #fff;
+  font-size: 35px;
+  font-weight: 600;
+  opacity: 90%;
+}
+.navbar menu {
+padding-left: 10px;
+}
+.navbar .menu li{
+  list-style: none;
+  display: inline-block;
+  margin:0px;
+  
+}
+.navbar .menu li a{
+  color: #fff;
+  float: left;
+  opacity: 90%
+}
+
+.navbar li {
+margin-right: 10px;
+}
+.li{
+margin-right: 40px;
 }

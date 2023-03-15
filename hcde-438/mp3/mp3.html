@@ -1,68 +1,93 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Poppins:wght@200;300&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="/portfolio-logo.png">
-    <link rel="stylesheet" href="/hcde-438/mp1/mp1.css" />
-  </head>
-  <body>
-    <div class="page-container">
-      <h1>MP3 Writeup: Minigame</h1>
-        <p>
-          This project uses dev tools and the p5.js + p5play libraries to create a mini combination game inspired by <a href="https://www.wesane.com/game/654/"> this game</a>. 
-          My minigame can be played <a href="https://arissazh.github.io/minigame/">here</a> through my website!
-        </p>
-        <h2>
-            My Development Process
-        </h2>
-        <ul class="improvements" style="list-style-type: disc;">
-          <li>Reading references, looking at demos, etc. of the p5play library</li>
-          <li>Started by following in-class dev-toolchain exercise to setup environment and install web dev server + libraries</li>
-          <li>Creating fruit shapes, setting gravity, collisions to floor</li>
-          <li>Overlapping settings and combinations when they are the same size</li>
-          <li>Increasing # of fruits available, setting sizes and colors</li>
-          <li>Illustrate fruit shapes externally to import onto sprites</li>
-        </ul>
-        <img src="/hcde-438/mp3/mp3 start.png" height="500">
-        <br>
-        <img src="/hcde-438/mp3/mp3-1.gif" height="500">
-        <img src="/hcde-438/mp3/mp3-2.gif" height="500">
-        <img src="/hcde-438/mp3/mp3-3.gif" height="500">
-        <p>
-            Below are the sketches I made as image assets to my sprites!
-        </p>
-        <img src="/hcde-438/mp3/mp3 fruits.png" width="500">
-      <h2>Issues</h2>
+ <head>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+     <title>Arissa's Dev Portfolio</title>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Poppins:wght@200;300&display=swap" rel="stylesheet">
+     <link href="/438.css" media="screen" rel="stylesheet" type="text/css" />
+     <link rel="icon" type="image/x-icon" href="portfolio-logo.png">
+ </head>
+ <body>
+   <nav class="navbar">
+     <div class="max-width">
+         <ul class="menu" style="padding-left: 10px">
+             <li><a href="/index.html">home</a></li>
+             <li><a href="/bio/bio.html">about</a></li>
+             <li><a href="/hcde439.html">hcde 439</a></li>
+             <li><a href="/hcde438.html">hcde 438</a></li>
+         </ul>
+     </div>
+ </nav>
+     <br><br><br><br>
+     <div class="header">
+       <h1 class="title-word">
+         <span class="title-word title-word-1">mp3:</span>
+         <span class="title-word title-word-2">toolkit</span>
+         <span class="title-word title-word-3">minigame ◡̈</span>
+     </h1>
+     </div>
+     <div class="page-container">
+      <img src="/hcde-438/mp3/mp3-final.gif" width="300" alt="gif of working game!">
       <p>
-        During this project, I ran into two minor issues: creating walls, and ending the game. Both of these issues were logic-related. </p>
-      <p>With the walls, I was struggling to prevent the balls from falling off of the floor platform (off screen). When I created new sprites for the side walls, 
-        they both kept falling off of the platform thus no longer existing and preventing the ball sprites from falling off screen. Eventually, after looking more in 
-        depth at the p5play references and other demo examples, I realized that this was due to the declared sprites being set to a dynamic collider. I used p5play’s “learn” exercises 
-        to try and implement some code from my own project in their examples, and I eventually created walls with help from Hannah’s example game setupBounds function. 
+        This project uses dev tools and the p5.js + p5play libraries to create a mini combination game inspired by <a href="https://www.wesane.com/game/654/"> this game</a>.
+        My minigame can be played <a href="https://arissazh.github.io/minigame/">here</a> through my website!
       </p>
-      <p>One of the requirements for the game is to have an ending. For this project, I wanted the game to end when the fruits reached a certain height on the screen, and 
-        then display the score. I approached this by creating a static sprite indicated by a red line; when the sprite group Fruit (any of the subgroups) overlapped with the 
-        outLine sprite, allSprites.remove(). However, this only resulted in a cleared screen–the user could still place down new sprites that would just fall to the ground, 
-        the score could still update, and there was no indication that the game was over. I used console.log() to try to figure out where in the code things were going wrong. 
-        For example, I originally tried to use a while loop and a gameOver boolean to make clear when the game was ongoing, and when it was over.  
-        I ended up approaching this issue by breaking sections of my code into different functions. For example, creating an “endGame” function that printed “game over” 
-        text with the final score, and a noLoop() declaration to make sure that the game could not be continued. This results in a screen-freeze and a clear indication that the game is over.  
+      <h2>
+          My Development Process
+      </h2>
+      <img src="/hcde-438/mp3/mp3 start.png" height="200" alt="initial version of my game">
+      <ul class="improvements" style="list-style-type: disc;">
+        <li>Reading references, looking at demos, etc. of the p5play library</li>
+        <li>Started by following in-class dev-toolchain exercise to setup environment and install web dev server + libraries</li>
+        <li>Creating fruit shapes, setting gravity, collisions to floor</li>
+        <li>Overlapping settings and combinations when they are the same size</li>
+        <li>Increasing # of fruits available, setting sizes and colors</li>
+        <li>Illustrate fruit shapes externally to import onto sprites</li>
+      </ul>
+     
+      <br>
+      <img src="/hcde-438/mp3/mp3-1.gif" height="500" alt="gif of simplest version of my game">
+      <img src="/hcde-438/mp3/mp3-2.gif" height="500" alt="gif of game after adding different ball types to combine">
+      <img src="/hcde-438/mp3/mp3-3.gif" height="500" alt="gif of final version of my game">
+      <p>
+          Below are the sketches I made as image assets to my sprites!
       </p>
-      <h2>Future Improvements</h2>
-        <ul class="improvements" style="list-style-type: disc;">
-            <li>Preview of the shape that will appear on the next click, so that players can plan out a strategy (like Tetris)</li>
-            <li>Animation or a slight delay when the shapes collide</li>
-            <li>Audio</li>
-            <li>Mobile compatibility</li>
-            <li>HTML page with game instructions</li>
-        </ul>
-    <h2>Kudos</h2>
-        <ul class="kuods" style="list-style-type: disc;">
-          <li><a href="https://p5play.org/learn/sprite.html">p5play learn & libraries</a></li>
-          <li><a href="https://github.com/branchwelder/example-game">Hannah's example game</a></li>
-          <li>Dev Toolkit in-class exercise</li>
-        </ul>
-    </div>
-  </body>
+      <img src="/hcde-438/mp3/mp3 fruits.png" width="300">
+    <h2>Issues</h2>
+    <p>
+      During this project, I ran into two minor issues: creating walls, and ending the game. Both of these issues were logic-related. </p>
+    <p>With the walls, I was struggling to prevent the balls from falling off of the floor platform (off screen). When I created new sprites for the side walls,
+      they both kept falling off of the platform thus no longer existing and preventing the ball sprites from falling off screen. Eventually, after looking more in
+      depth at the p5play references and other demo examples, I realized that this was due to the declared sprites being set to a dynamic collider. I used p5play’s “learn” exercises
+      to try and implement some code from my own project in their examples, and I eventually created walls with help from Hannah’s example game setupBounds function.
+    </p>
+    <p>One of the requirements for the game is to have an ending. For this project, I wanted the game to end when the fruits reached a certain height on the screen, and
+      then display the score. I approached this by creating a static sprite indicated by a red line; when the sprite group Fruit (any of the subgroups) overlapped with the
+      outLine sprite, allSprites.remove(). However, this only resulted in a cleared screen–the user could still place down new sprites that would just fall to the ground,
+      the score could still update, and there was no indication that the game was over. I used console.log() to try to figure out where in the code things were going wrong.
+      For example, I originally tried to use a while loop and a gameOver boolean to make clear when the game was ongoing, and when it was over. 
+      I ended up approaching this issue by breaking sections of my code into different functions. For example, creating an “endGame” function that printed “game over”
+      text with the final score, and a noLoop() declaration to make sure that the game could not be continued. This results in a screen-freeze and a clear indication that the game is over. 
+    </p>
+    <h2>Future Improvements</h2>
+      <ul class="improvements" style="list-style-type: disc;">
+          <li>Preview of the shape that will appear on the next click, so that players can plan out a strategy (like Tetris)</li>
+          <li>Animation or a slight delay when the shapes collide</li>
+          <li>Audio</li>
+          <li>Mobile compatibility</li>
+          <li>HTML page with game instructions</li>
+      </ul>
+  <h2>Kudos</h2>
+      <ul class="improvements" style="list-style-type: disc;">
+        <li><a href="https://p5play.org/learn/sprite.html">p5play learn & libraries</a></li>
+        <li><a href="https://github.com/branchwelder/example-game">Hannah's example game</a></li>
+        <li>Dev Toolkit in-class exercise</li>
+      </ul>
+  </div>
+</body>
 </html>
+
+
